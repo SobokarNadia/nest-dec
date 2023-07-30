@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  nest-dec-postgres:
+    image: postgis/postgis
+    ports:
+      - '${POSTGRES_EXTERNAL_PORT:-5432}:5432'
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: nest-dec
+    volumes:
+      - nest-dec-db:/var/lib/postgresql/dec-2022
+
+volumes:
+  nest-dec-db:
+
