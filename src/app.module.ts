@@ -4,9 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { CarModule } from './car/car.module';
 import { AuthModule } from './auth/auth.module';
+import { CarModule } from './car/car.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -25,7 +25,8 @@ import { AuthModule } from './auth/auth.module';
         database: configService.get('DB_DATABASE'),
         synchronize: false,
         entities: [__dirname + '/**/*.entity{.js, .ts}'],
-        // migrationsTableName: 'migrations',
+        migrationsTableName: 'migrations',
+        // autoLoadEntities: true
       }),
       inject: [ConfigService],
     }),
